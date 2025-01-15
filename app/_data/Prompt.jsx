@@ -1,4 +1,4 @@
 export default{
-    DESIGN_IDEA_PROMPT:'Based on Logo of type {logoType} Generate a text prompt to create Logo for Logo title/Brand name : {logoTitle} with decription: {logoDesc} and refering to prompt: {logoPrompt}. Give me 4/5 Suggestion  (each idea with maximum 4-5 words), Result in JSON format and in array named ideas',
+    DESIGN_IDEA_PROMPT:'Generate 4 to 5 logo design ideas based on the following details:- Logo type: {logoType} , Brand name/logo title: {logoTitle}, Description {logoDesc} , Refrence prompt {logoPrompt}   . Provide the result as a JSON array with each idea being a short string (4-5 words) under the key "ideas". ',
     LOGO_PROMPT:'Generate a text prompt to create Logo for Logo Title/Brand name : {logoTitle},with description: {logoDesc}, with Color combination of {logoColor}, also include the {logoIdea} and include {logoDesign} design idea and Referring to this Logo Prompt:{logoPrompt}  Give me result in JSON portal with prompt field only'
-}
+} 
