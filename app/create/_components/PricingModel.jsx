@@ -30,7 +30,7 @@ const PricingModel = ({formData}) => {
                         width={60}
                         height={60}
                         />
-                        <h2 className='font-medium text-2xl'></h2>
+                        <h2 className='font-medium text-2xl'>{pricing.title}</h2>
                         <div>
                            {
                             pricing.features.map((feature,index) => (

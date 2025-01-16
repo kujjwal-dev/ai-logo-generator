@@ -4,10 +4,10 @@ import Lookup from '@/app/_data/Lookup';
 import axios from 'axios';
 import Prompt from '@/app/_data/Prompt';
 
-function LogoIdea({ formData,  }) {
+function LogoIdea({ formData }) {
   const [ideas, setIdeas] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [selectedOption,setSelectedOption] = useState();
+  const [selectedOption, setSelectedOption] = useState();
 
   useEffect(() => {
     generateLogoDesignIdea();
@@ -46,6 +46,12 @@ function LogoIdea({ formData,  }) {
     }
   };
 
+  // Defined function to handle input change
+  const onHandleInputChange = (idea) => {
+    // Implement your logic here
+    console.log(idea);
+  };
+
   return (
     <div className="my-10">
       <HeadingDescription
@@ -53,29 +59,35 @@ function LogoIdea({ formData,  }) {
         description={Lookup.LogoIdeaDesc}
       />
       <div className='flex flex-wrap gap-3 mt-6'>
-      {loading && <p>Loading...</p>}
-      {!loading && ideas.length > 0 ? (
-        ideas.map((idea, index) => (
-          <h2 key={index}
-          onClick={() => {setSelectedOption(idea);
-            onHanleInputChange(idea)
-          }
-
-          }
-           className={`p-2 rounded-full border px-3 cursor-pointer hover:border-primary
-          ${selectedOption==idea&&'border-primary'}`}>
-            {idea}
-          </h2>
-        ))
-      ) : (
-        !loading && <p>No ideas generated yet.</p>
-      )}
+        {loading && <p>Loading...</p>}
+        {!loading && ideas.length > 0 ? (
+          ideas.map((idea, index) => (
+            <h2
+              key={index}
+              onClick={() => {
+                setSelectedOption(idea);
+                onHandleInputChange(idea); // Fixed typo and called the function
+              }}
+              className={`p-2 rounded-full border px-3 cursor-pointer hover:border-primary
+                ${selectedOption === idea && 'border-primary'}`}
+            >
+              {idea}
+            </h2>
+          ))
+        ) : (
+          !loading && <p>No ideas generated yet.</p>
+        )}
       </div>
-      <h2  onClick={() => {setSelectedOption(idea);
-            onHanleInputChange('Let AI Select the best idea')
-          }}
-      className={`p-2 rounded-full border px-3 cursor-pointer hover:border-primary
-          ${selectedOption=="Let AI Select the best idea"&&'border-primary'}`}>Let AI Select the best idea</h2>
+      <h2
+        onClick={() => {
+          setSelectedOption("Let AI Select the best idea");
+          onHandleInputChange('Let AI Select the best idea'); // Fixed typo and called the function
+        }}
+        className={`p-2 rounded-full border px-3 cursor-pointer hover:border-primary
+          ${selectedOption === "Let AI Select the best idea" && 'border-primary'}`}
+      >
+        Let AI Select the best idea
+      </h2>
     </div>
   );
 }
